@@ -5,7 +5,7 @@ require 'faf/markdown/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "faf-markdown"
-  spec.version       = Faf::Markdown::VERSION
+  spec.version       = FAF::Markdown::VERSION
   spec.authors       = ["Andrei Istratii"]
   spec.email         = ["andrei.istratii@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}

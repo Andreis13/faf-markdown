@@ -1,4 +1,4 @@
-# Faf::Markdown
+# FAF::Markdown
 
 TODO: Write a gem description
 
