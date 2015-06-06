@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'faf/markdown/parser'
+
+input = $stdin.read
+puts FAF::Markdown::Parser.new(input).run
