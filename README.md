@@ -1,6 +1,7 @@
 # FAF::Markdown
 
-TODO: Write a gem description
+This is the Course Work for the APPOO class. It is a simple Markdown parser
+with very limited and unreliable functionality.
 
 ## Installation
 
@@ -20,12 +21,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The gem contains 2 executables `faf-markdown` and `faf-markdown-app`. The former
+is a CLI application that just reads markdown from `stdin` if no option is given.
+It supports two options:
+  * `--url URL` - fetches the markdown from the supplied URL
+  * `--file FILENAME` - gets the markdown from the specified file
 
-## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/faf-markdown/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
