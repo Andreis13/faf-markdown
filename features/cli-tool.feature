@@ -15,33 +15,8 @@ Feature: Command Line Tool
     | "par 1\n\npar 2"                | "<p>par 1</p>\n\n<p>par 2</p>"         |
     | "par 1\n\n\n\n\npar 2"          | "<p>par 1</p>\n\n<p>par 2</p>"         |
 
-
-
-  @final
-  Scenario: It parses the markdown provided by course work conditions
-    Given a file named "input" with:
-    """
-    # Hello FAF, this is a document
-    So we're trying to do interesting documents
-
-    They are actually quide **hard**
-    Not that *easy*
-
-    What happens if we do ##this?
-
-    How about `*this*`?
-
-    **it *wor`k`s!***
-
-    Let me put a bold link: [**stuff**](http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg)
-    ## Okay, part two
-
-    But there's no part two!
-
-    ###### So long!
-    """
-    When I run `bundle exec faf-markdown` interactively
-    And I pipe in the file "input"
+  Scenario: Parse markdown from URL
+    When I run `bundle exec faf-markdown --url https://gist.githubusercontent.com/minivan/f29e2759c44d13e39b5b/raw/7bc948fc89d467db05d879e61ac09a7f70f75362/input.md`
     Then the stdout should contain:
     """
     <h1>Hello FAF, this is a document</h1>
@@ -64,4 +39,49 @@ Feature: Command Line Tool
     <p>But there's no part two!</p>
 
     <h6>So long!</h6>
+    """
+
+  Scenario: Parse piped-in data
+    Given a file named "input" with:
+    """
+    ## Hello FAF, this is a document
+    What happens if we do [**stuff**](http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg)?
+
+    How about `*this*`?
+
+    **it *wor`k`s!***
+    """
+    When I run `bundle exec faf-markdown` interactively
+    And I pipe in the file "input"
+    Then the stdout should contain:
+    """
+    <h2>Hello FAF, this is a document</h2>
+
+    <p>What happens if we do <a href="http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg"><strong>stuff</strong></a>?</p>
+
+    <p>How about <code><em>this</em></code>?</p>
+
+    <p><strong>it <em>wor<code>k</code>s!</em></strong></p>
+    """
+
+  Scenario: Parse data from a file
+    Given a file named "input" with:
+    """
+    ## Hello FAF, this is a document
+    What happens if we do [**stuff**](http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg)?
+
+    How about `*this*`?
+
+    **it *wor`k`s!***
+    """
+    When I run `bundle exec faf-markdown --file input`
+    Then the stdout should contain:
+    """
+    <h2>Hello FAF, this is a document</h2>
+
+    <p>What happens if we do <a href="http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg"><strong>stuff</strong></a>?</p>
+
+    <p>How about <code><em>this</em></code>?</p>
+
+    <p><strong>it <em>wor<code>k</code>s!</em></strong></p>
     """

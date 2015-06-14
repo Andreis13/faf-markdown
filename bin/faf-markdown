@@ -1,6 +1,21 @@
 #!/usr/bin/env ruby
 
 require 'faf/markdown/parser'
+require 'faf/markdown/cli_options'
 
-input = $stdin.read
+
+opts = FAF::Markdown::CliOptions.new(ARGV)
+
+input = nil
+
+if opts.url
+  require 'net/http'
+  uri = URI(opts.url)
+  input = Net::HTTP.get(uri)
+elsif opts.file
+  input = File.read(opts.file)
+else
+  input = $stdin.read
+end
+
 puts FAF::Markdown::Parser.new(input).run
