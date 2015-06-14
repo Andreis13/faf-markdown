@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["andrei.istratii@gmail.com"]
   spec.summary       = %q{APPOO Course Work - 2015.}
   spec.description   = %q{A simple markdown Markdown parser.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/Andreis13/faf-markdown"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
