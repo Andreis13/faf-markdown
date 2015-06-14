@@ -27,4 +27,8 @@ It supports two options:
   * `--url URL` - fetches the markdown from the supplied URL
   * `--file FILENAME` - gets the markdown from the specified file
 
+And the later is a sinatra application that displays a form with a text field
+where you can specify the URL of a markdown file and it will parse it and display
+the result as beautiful HTML as well as the obtained source.
+
 
