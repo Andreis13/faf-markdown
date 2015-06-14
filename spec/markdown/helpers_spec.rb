@@ -27,63 +27,9 @@ describe FAF::Markdown::Helpers do
   describe '#tag_options' do
     it 'stringifies a hash of attributes' do
       expect( obj.tag_options(:href => 'some', :title => 'other'))
-        .to eq 'href="some" title="other"'
+        .to eq ' href="some" title="other"'
     end
   end
 
-  describe '#split_top_level' do
-    it 'groups paragraph and heading lines' do
-      expect(
-        obj.split_top_level "a b c\n\ndef\n"
-      ).to eq ["a b c", "def"]
 
-      expect(
-        obj.split_top_level "a b\nc\ndef"
-      ).to eq ["a b\nc\ndef"]
-
-      expect(
-        obj.split_top_level "a bc\ndef"
-      ).to eq ["a bc\ndef"]
-
-      expect(
-        obj.split_top_level "## a b\nc\ndef"
-      ).to eq ["## a b", "c\ndef"]
-
-      expect(
-        obj.split_top_level "# a\n## a b\nc\ndef"
-      ).to eq ["# a", "## a b", "c\ndef"]
-
-      expect(
-        obj.split_top_level "## a b\nc\ndef"
-        ).to eq ["## a b", "c\ndef"]
-
-      expect(
-        obj.split_top_level "a\n\n\n\nc\ndef"
-      ).to eq ["a", "c\ndef"]
-
-      expect(
-        obj.split_top_level "\n####ac\ndef"
-      ).to eq ["####ac\ndef"]
-
-      expect(
-        obj.split_top_level "### acdef"
-      ).to eq ["### acdef"]
-
-      expect(
-        obj.split_top_level "###acdef"
-      ).to eq ["###acdef"]
-
-      expect(
-        obj.split_top_level "###\nacdef"
-      ).to eq ["###\nacdef"]
-
-      expect(
-        obj.split_top_level "   ### \nacdef"
-      ).to eq ["   ### \nacdef"]
-
-      expect(
-        obj.split_top_level "abc\n### arst"
-      ).to eq ["abc", "### arst"]
-    end
-  end
 end

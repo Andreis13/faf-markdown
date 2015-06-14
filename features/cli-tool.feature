@@ -53,11 +53,11 @@ Feature: Command Line Tool
 
     <p>What happens if we do ##this?</p>
 
-    <p>How about <code><strong>this</strong></code>?</p>
+    <p>How about <code><em>this</em></code>?</p>
 
     <p><strong>it <em>wor<code>k</code>s!</em></strong></p>
 
-    <p>Let me put a bold link: <a href="http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg" rel="noreferrer" class="hoverZoomLink"><strong>stuff</strong></a></p>
+    <p>Let me put a bold link: <a href="http://41.media.tumblr.com/49a58542fd70b8ca39b5bd0d9c9c53aa/tumblr_nob40mvTN41tb9nzio1_500.jpg"><strong>stuff</strong></a></p>
 
     <h2>Okay, part two</h2>
 
