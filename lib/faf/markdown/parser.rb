@@ -14,8 +14,8 @@ module FAF
 
       def run
         split_top_level(@input_data).map do |itm|
-          if md = itm.match(/^\s*(\#{1,6})\s+(.+)$/)
-            content_tag("h#{md[1].size}", process_top_level(md[2]))
+          if md = itm.match(/\#{1,6}/)
+            content_tag("h#{md[0].size}", process_top_level(itm.sub(/\#{1,6}\s*/, '')))
           else
             content_tag('p', process_top_level(itm))
           end
@@ -26,8 +26,8 @@ module FAF
 
       def split_top_level(string)
         string.lines.slice_when do |line1, line2|
-          line1.match(/\#{1,6}\s+.+$/) || line1.chomp.empty? ||
-            line2.match(/\#{1,6}\s+.+$/) || line2.chomp.empty?
+          line1.match(/\#{1,6}/) || line1.chomp.empty? ||
+            line2.match(/\#{1,6}/) || line2.chomp.empty?
         end.map do |group|
           group.reject { |itm| itm.chomp.empty? }.join.chomp
         end.reject(&:empty?)

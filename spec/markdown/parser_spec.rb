@@ -47,7 +47,7 @@ describe FAF::Markdown::Parser do
 
         expect(
           subject.send(:split_top_level, "\n####ac\ndef")
-        ).to eq ["####ac\ndef"]
+        ).to eq ["####ac", "def"]
 
         expect(
           subject.send(:split_top_level, "### acdef")
@@ -59,11 +59,11 @@ describe FAF::Markdown::Parser do
 
         expect(
           subject.send(:split_top_level, "###\nacdef")
-        ).to eq ["###\nacdef"]
+        ).to eq ["###", "acdef"]
 
         expect(
           subject.send(:split_top_level, "   ### \nacdef")
-        ).to eq ["   ### \nacdef"]
+        ).to eq ["   ### ", "acdef"]
 
         expect(
           subject.send(:split_top_level, "abc\n### arst")

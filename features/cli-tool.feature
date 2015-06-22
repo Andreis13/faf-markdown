@@ -10,8 +10,8 @@ Feature: Command Line Tool
     | input                           | output                                 |
     | "# some heading"                | "<h1>some heading</h1>"                |
     | "## some heading"               | "<h2>some heading</h2>"                |
-    | "arst ## some heading"          | "<p>arst ## some heading</p>"          |
-    | "arst ##some heading"           | "<p>arst ##some heading</p>"           |
+    | "arst ## some heading"          | "<h2>arst some heading</h2>"          |
+    | "arst ##some heading"           | "<h2>arst some heading</h2>"           |
     | "par 1\n\npar 2"                | "<p>par 1</p>\n\n<p>par 2</p>"         |
     | "par 1\n\n\n\n\npar 2"          | "<p>par 1</p>\n\n<p>par 2</p>"         |
 
@@ -26,7 +26,7 @@ Feature: Command Line Tool
     <p>They are actually quide <strong>hard</strong>
     Not that <em>easy</em></p>
 
-    <p>What happens if we do ##this?</p>
+    <h2>What happens if we do this?</h2>
 
     <p>How about <code><em>this</em></code>?</p>
 
