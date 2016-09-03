@@ -5,19 +5,9 @@ with very limited and unreliable functionality.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'faf-markdown'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install faf-markdown
+* Clone repo
+* Build gem
+* Install gem from the local build
 
 ## Usage
 
